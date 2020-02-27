@@ -2,80 +2,12 @@
 mapboxgl.accessToken = 'pk.eyJ1Ijoic3BtNTA3IiwiYSI6ImNrNmxmYnZrMTAzNzAzaHBodTRmd2hpZm0ifQ.Tf4_3bYwjcuHv39tq01CWQ';
 
 
-// a helper function for looking up colors and descriptions for NYC land use codes
-var LandUseLookup = (code) => {
-  switch (code) {
-    case 1:
-      return {
-        color: '#f4f455',
-        description: '1 & 2 Family',
-      };
-    case 2:
-      return {
-        color: '#f7d496',
-        description: 'Multifamily Walk-up',
-      };
-    case 3:
-      return {
-        color: '#FF9900',
-        description: 'Multifamily Elevator',
-      };
-    case 4:
-      return {
-        color: '#f7cabf',
-        description: 'Mixed Res. & Commercial',
-      };
-    case 5:
-      return {
-        color: '#ea6661',
-        description: 'Commercial & Office',
-      };
-    case 6:
-      return {
-        color: '#d36ff4',
-        description: 'Industrial & Manufacturing',
-      };
-    case 7:
-      return {
-        color: '#dac0e8',
-        description: 'Transportation & Utility',
-      };
-    case 8:
-      return {
-        color: '#5CA2D1',
-        description: 'Public Facilities & Institutions',
-      };
-    case 9:
-      return {
-        color: '#8ece7c',
-        description: 'Open Space & Outdoor Recreation',
-      };
-    case 10:
-      return {
-        color: '#bab8b6',
-        description: 'Parking Facilities',
-      };
-    case 11:
-      return {
-        color: '#5f5f60',
-        description: 'Vacant Land',
-      };
-    case 12:
-      return {
-        color: '#5f5f60',
-        description: 'Other',
-      };
-    default:
-      return {
-        color: '#5f5f60',
-        description: 'Other',
-      };
-  }
-};
+var initialCenterPoint = [-73.9403373, 40.848137]
+var initialZoom = 13
 
-// set the default text for the feature-info div
 
-var defaultText = '<p>Move the mouse over the map to get more info on a property</p>'
+
+var defaultText = '<p>Move the mouse over the map to see when a property was built </p>'
 $('#feature-info').html(defaultText)
 
 // create an object to hold the initialization options for a mapboxGL map
@@ -112,51 +44,55 @@ map.on('style.load', function() {
     paint: {
       'fill-color': {
         type: 'categorical',
-        property: 'LandUse',
+        property: 'YearBuilt',
         stops: [
           [
-            '01',
-            LandUseLookup(1).color,
+            1830 < 'YearBuilt' < 1850,
+            teal,
           ],
           [
-            '02',
-            LandUseLookup(2).color,
+            1850 < 'YearBuilt' < 1870,
+            maroon,
           ],
           [
-            '03',
-            LandUseLookup(3).color,
+            1870 < 'YearBuilt' < 1890,
+            pink,
           ],
           [
-            '04',
-            LandUseLookup(4).color,
+            1890 < 'YearBuilt' < 1910,
+            orange,
           ],
           [
-            '05',
-            LandUseLookup(5).color,
+            1910 < 'YearBuilt' < 1930,
+            red,
           ],
           [
-            '06',
-            LandUseLookup(6).color,
+            1930 < 'YearBuilt' < 1950,
+            grey,
           ],
           [
-            '07',
-            LandUseLookup(7).color,
+            1950 < 'YearBuilt' < 1970,
+            steel blue,
           ],
           [
-            '08',
-            LandUseLookup(8).color,
+            1970 < 'YearBuilt' < 1990,
+            green,
           ],
           [
-            '09',
-            LandUseLookup(9).color,
+            1990 < 'YearBuilt' < 2010,
+            lime,
           ],
           [
-            '10',
-            LandUseLookup(10).color,
+            2010 < 'YearBuilt' < 2020,
+            purple,
           ],
           [
-            '11',
-            LandUseLookup(11).color,
+            1800 < 'YearBuilt' < 1830,
+            yellow,
+          ],
+          [
+            1600 < 'YearBuilt' < 1800,
+            turquoise,
           ],
 
         ]
@@ -201,7 +137,7 @@ map.on('style.load', function() {
       var hoveredFeature = features[0]
       var featureInfo = `
         <h4>${hoveredFeature.properties.Address}</h4>
-        <p><strong>Land Use:</strong> ${LandUseLookup(parseInt(hoveredFeature.properties.LandUse)).description}</p>
+        <p><strong>Year Built:</strong> ${YearBuiltLookup(parseInt(hoveredFeature.properties.YearBuilt)).description}</p>
         <p><strong>Zoning:</strong> ${hoveredFeature.properties.ZoneDist1}</p>
       `
       $('#feature-info').html(featureInfo)
