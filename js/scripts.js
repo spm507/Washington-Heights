@@ -2,9 +2,6 @@
 mapboxgl.accessToken = 'pk.eyJ1Ijoic3BtNTA3IiwiYSI6ImNrNmxmYnZrMTAzNzAzaHBodTRmd2hpZm0ifQ.Tf4_3bYwjcuHv39tq01CWQ';
 
 
-var initialCenterPoint = [,-73.9428149, 40.8450225]
-var initialZoom = 13
-
 // a helper function for looking up colors and descriptions for NYC land use codes
 var LandUseLookup = (code) => {
   switch (code) {
