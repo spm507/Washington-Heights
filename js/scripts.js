@@ -99,7 +99,7 @@ map.addControl(new mapboxgl.NavigationControl());
 map.on('style.load', function() {
 
   // add a geojson source to the map using our external geojson file
-  map.addSource('pluto-zip-10033', {
+  map.addSource('Washington_Heights', {
     type: 'geojson',
     data: './data/Washington_Heights.geojson',
   });
@@ -109,9 +109,9 @@ map.on('style.load', function() {
 
   // add a layer for our custom source
   map.addLayer({
-    id: 'pluto-zip-10033',
+    id: 'Washington_Heights',
     type: 'fill',
-    source: 'pluto-zip-10033',
+    source: 'Washington_Heights',
     paint: {
       'fill-color': {
         type: 'categorical',
@@ -193,7 +193,7 @@ map.on('style.load', function() {
   map.on('mousemove', function (e) {
     // query for the features under the mouse, but only in the lots layer
     var features = map.queryRenderedFeatures(e.point, {
-        layers: ['fill-pluto-zip-10033'],
+        layers: ['fill-Washington_Heights'],
     });
 
     // if the mouse pointer is over a feature on our layer of interest
