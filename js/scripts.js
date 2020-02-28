@@ -44,35 +44,35 @@ map.on('style.load', function() {
         property: 'YearBuilt',
         stops: [
           [
-            1870,
+            1700,
             'pink'
           ],
           [
-            1930,
-            'grey'
+            1800,
+            'orange'
           ],
           [
-            1950,
-            'steel blue'
+            1850,
+            'blue'
           ],
           [
-            1970,
+            1900,
             'green'
           ],
           [
-            1990,
-            'lime'
+            1920,
+            'steelblue'
           ],
           [
-            2010,
-            'purple'
+            1950,
+            'lavender'
           ],
           [
-            1800,
+            1970,
             'yellow'
           ],
           [
-            1700,
+            2000,
             'turquoise'
           ],
 
