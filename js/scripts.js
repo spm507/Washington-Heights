@@ -47,51 +47,51 @@ map.on('style.load', function() {
         property: 'YearBuilt',
         stops: [
           [
-            1830 < 'YearBuilt' < 1850,
+            1830,
             teal,
           ],
           [
-            1850 < 'YearBuilt' < 1870,
+            1850,
             maroon,
           ],
           [
-            1870 < 'YearBuilt' < 1890,
+            1870,
             pink,
           ],
           [
-            1890 < 'YearBuilt' < 1910,
+            1890,
             orange,
           ],
           [
-            1910 < 'YearBuilt' < 1930,
+            1910,
             red,
           ],
           [
-            1930 < 'YearBuilt' < 1950,
+            1930,
             grey,
           ],
           [
-            1950 < 'YearBuilt' < 1970,
+            1950,
             steel blue,
           ],
           [
-            1970 < 'YearBuilt' < 1990,
+            1970,
             green,
           ],
           [
-            1990 < 'YearBuilt' < 2010,
+            1990,
             lime,
           ],
           [
-            2010 < 'YearBuilt' < 2020,
+            2010,
             purple,
           ],
           [
-            1800 < 'YearBuilt' < 1830,
+            1800,
             yellow,
           ],
           [
-            1600 < 'YearBuilt' < 1800,
+            1700,
             turquoise,
           ],
 
@@ -137,7 +137,7 @@ map.on('style.load', function() {
       var hoveredFeature = features[0]
       var featureInfo = `
         <h4>${hoveredFeature.properties.Address}</h4>
-        <p><strong>Year Built:</strong> ${YearBuiltLookup(parseInt(hoveredFeature.properties.YearBuilt)).description}</p>
+        <p><strong>Year Built:</strong> ${(hoveredFeature.properties.YearBuilt).description}</p>
         <p><strong>Zoning:</strong> ${hoveredFeature.properties.ZoneDist1}</p>
       `
       $('#feature-info').html(featureInfo)
