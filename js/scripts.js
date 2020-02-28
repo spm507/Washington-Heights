@@ -5,8 +5,6 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoic3BtNTA3IiwiYSI6ImNrNmxmYnZrMTAzNzAzaHBodTRmd
 var initialCenterPoint = [-73.9403373, 40.848137]
 var initialZoom = 13
 
-
-
 var defaultText = '<p>Move the mouse over the map to see when a property was built </p>'
 $('#feature-info').html(defaultText)
 
@@ -38,61 +36,44 @@ map.on('style.load', function() {
 
   // add a layer for our custom source
   map.addLayer({
-    id: 'Washington_Heights',
+    id: 'fill-Washington_Heights',
     type: 'fill',
     source: 'Washington_Heights',
     paint: {
       'fill-color': {
-        type: 'categorical',
         property: 'YearBuilt',
         stops: [
           [
-            1830,
-            teal,
-          ],
-          [
-            1850,
-            maroon,
-          ],
-          [
             1870,
-            pink,
-          ],
-          [
-            1890,
-            orange,
-          ],
-          [
-            1910,
-            red,
+            'pink'
           ],
           [
             1930,
-            grey,
+            'grey'
           ],
           [
             1950,
-            steel blue,
+            'steel blue'
           ],
           [
             1970,
-            green,
+            'green'
           ],
           [
             1990,
-            lime,
+            'lime'
           ],
           [
             2010,
-            purple,
+            'purple'
           ],
           [
             1800,
-            yellow,
+            'yellow'
           ],
           [
             1700,
-            turquoise,
+            'turquoise'
           ],
 
         ]
@@ -137,7 +118,7 @@ map.on('style.load', function() {
       var hoveredFeature = features[0]
       var featureInfo = `
         <h4>${hoveredFeature.properties.Address}</h4>
-        <p><strong>Year Built:</strong> ${(hoveredFeature.properties.YearBuilt).description}</p>
+        <p><strong>Year Built:</strong> ${hoveredFeature.properties.YearBuilt}</p>
         <p><strong>Zoning:</strong> ${hoveredFeature.properties.ZoneDist1}</p>
       `
       $('#feature-info').html(featureInfo)
